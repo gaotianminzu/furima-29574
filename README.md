@@ -28,39 +28,37 @@ Things you may want to cover:
 
 ## users テーブル
 
-| Column          | Type    | Options     |
-| ----------------| ------- | ----------- |
-| nickname        | string  | null: false |
-| email           | string  | null: false |
-| password        | string  | null: false |
-| first_name      | string  | null: false |
-| last_name       | string  | null: false |
-| first_name_kana | string  | null: false |
-| last_name_kana  | string  | null: false |
-| birth_y         | integer | null: false |
-| birth_m         | integer | null: false |
-| birth_d         | integer | null: false |
+| Column             | Type    | Options     |
+| -------------------| ------- | ----------- |
+| nickname           | string  | null: false |
+| email              | string  | null: false |
+| encrypted_password | string  | null: false |
+| first_name         | string  | null: false |
+| last_name          | string  | null: false |
+| first_name_kana    | string  | null: false |
+| last_name_kana     | string  | null: false |
+| birth_date         | integer | null: false |
 
 ### Association
 
-- has_one :shipping_address
+- has_many :purchase_records
 - has_many :items
 - has_many :comments
 
 ## items テーブル
 
-| Column        | Type       | Options                        |
-| --------------| -----------| ------------------------------ |
-| item_image    | string     | null: false                    |
-| item_name     | string     | null: false                    |
-| item_detail   | string     | null: false                    |
-| category      | string     | null: false                    |
-| condition     | string     | null: false                    |
-| shipping_fee  | integer    | null: false                    |
-| shipping_place| string     | null: false                    |
-| shipping_days | string     | null: false                    |
-| item_cost     | string     | null: false                    |
-| seller_id     | references | null: false, foreign_key: true |
+| Column            | Type       | Options                        |
+| ------------------| -----------| ------------------------------ |
+| item_image        | string     | null: false                    |
+| item_name         | string     | null: false                    |
+| item_detail       | string     | null: false                    |
+| category_id       | string     | null: false                    |
+| condition_id      | string     | null: false                    |
+| shipping_fee_id   | string     | null: false                    |
+| shipping_place_id | string     | null: false                    |
+| shipping_days_id  | string     | null: false                    |
+| item_cost         | integer    | null: false                    |
+| user              | references | null: false, foreign_key: true |
 
 ### Association
 
@@ -72,43 +70,40 @@ Things you may want to cover:
 
 | Column              | Type       | Options                        |
 | --------------------| -----------| ------------------------------ |
-| prefecture          | string     | null: false                    |
+| prefecture_id       | integer    | null: false                    |
 | city_town_villages  | string     | null: false                    |
 | house_num           | string     | null: false                    |
 | building_name       | string     | null: false                    |
 | phone_number        | string     | null: false                    |
-| purchaser_id        | references | null: false, foreign_key: true |
+| purchase_record     | references | null: false, foreign_key: true |
 
-### Association
+### Association  
 
 - has_many :purchase_records
-- belongs_to :user
-
 
 ## purchase_record テーブル
 
 | Column              | Type       | Options                        |
 | --------------------| -----------| ------------------------------ |
 | purchase_date       | string     | null: false                    |
-| purchaser_id        | references | null: false, foreign_key: true |
-| shipping_address_id | references | null: false, foreign_key: true |
-| item_id             | references | null: false, foreign_key: true |
+| user                | references | null: false, foreign_key: true |
+| item                | references | null: false, foreign_key: true |
 
 ### Association
 
-- belongs_to :item
-- belongs_to :shipping_address
+
+- belongs_to :user
 - has_one :item
+- belongs_to :shipping_address
 
 ## comments テーブル
 
 | Column  | Type       | Options                        |
 | --------| -----------| ------------------------------ |
 | text    | string     | null: false                    |
-| item_id | references | null: false, foreign_key: true |
-| user_id | references | null: false, foreign_key: true |
+| item    | references | null: false, foreign_key: true |
+| user    | references | null: false, foreign_key: true |
 
-### Association
-
+### Associatio
 - belongs_to :item
 - belongs_to :user
