@@ -49,8 +49,7 @@ Things you may want to cover:
 
 | Column            | Type       | Options                        |
 | ------------------| -----------| ------------------------------ |
-| item_image        | string     | null: false                    |
-| item_name         | string     | null: false                    |
+| name              | string     | null: false                    |
 | item_detail       | string     | null: false                    |
 | category_id       | string     | null: false                    |
 | condition_id      | string     | null: false                    |
@@ -70,6 +69,7 @@ Things you may want to cover:
 
 | Column              | Type       | Options                        |
 | --------------------| -----------| ------------------------------ |
+| postal_code         | integer    | null: false                    |
 | prefecture_id       | integer    | null: false                    |
 | city_town_villages  | string     | null: false                    |
 | house_num           | string     | null: false                    |
@@ -85,7 +85,6 @@ Things you may want to cover:
 
 | Column              | Type       | Options                        |
 | --------------------| -----------| ------------------------------ |
-| purchase_date       | string     | null: false                    |
 | user                | references | null: false, foreign_key: true |
 | item                | references | null: false, foreign_key: true |
 
