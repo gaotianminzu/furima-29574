@@ -1,14 +1,14 @@
 class Item < ApplicationRecord
- t.string :name
- t.text :detail
- t.integer :category_id
- t.integer :condition
- t.integer :shipping_fee_id
- t.integer :shipping_place_id
- t.integer :shipping_days_id
- t.integer :shipping_days_id
- t.integer :cost
- t.references :user, foreign_key: true 
+  t.string :name
+  t.text :detail
+  t.integer :category_id
+  t.integer :condition
+  t.integer :shipping_fee_id
+  t.integer :shipping_place_id
+  t.integer :shipping_days_id
+  t.integer :shipping_days_id
+  t.integer :cost
+  t.references :user, foreign_key: true
 end
 # | Column            | Type       | Options                        |
 # | ------------------| -----------| ------------------------------ |
