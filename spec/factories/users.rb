@@ -11,17 +11,3 @@ FactoryBot.define do
     birth_date { Faker::Date.between(from: '1930-01-01', to: '2015-12-31') }
   end
 end
-
-# FactoryBot.define do
-#   factory :user do
-#     nickname              {"たかだ"}
-#     email                 {"kkk@gmail.com"}
-#     password              {"123abc"}
-#     password_confirmation {password}
-#     first_name  {"明子"}
-#     last_name   {"高田"}
-#     first_name_kana  {"アキコ"}
-#     last_name_kana   {"タカダ"}
-#     birth_date  {2020-02-02}
-#   end
-# end
