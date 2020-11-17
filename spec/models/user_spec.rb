@@ -42,7 +42,7 @@ RSpec.describe User, type: :model do
         expect(@user).to be_valid
       end
       it 'first_name_kanaが 全角（カタカナ）であれば、登録できる。' do
-        @user.first_name = 'タカダ'
+        @user.first_name_kana = 'タカダ'
         expect(@user).to be_valid
       end
 
@@ -59,7 +59,7 @@ RSpec.describe User, type: :model do
         expect(@user).to be_valid
       end
       it 'last_name_kanaが 全角（カタカナ）であれば、登録できる。' do
-        @user.last_name = 'アキコ'
+        @user.last_name_kana = 'アキコ'
         expect(@user).to be_valid
       end
     end
@@ -211,7 +211,6 @@ RSpec.describe User, type: :model do
         @user.valid?
         expect(@user.errors.full_messages).to include('Last name kana は全角カタカナで入力して下さい。')
       end
-
     end
   end
 end
