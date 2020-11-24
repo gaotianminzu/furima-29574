@@ -4,7 +4,7 @@ class ItemsController < ApplicationController
   def index
     @items = Item.all
   end
-  
+
   def new
     @item = Item.new
   end
@@ -12,7 +12,7 @@ class ItemsController < ApplicationController
   def create
     @item = Item.new(item_params)
     if @item.valid?
-       @item.save
+      @item.save
       redirect_to root_path
     else
       render :new
