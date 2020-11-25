@@ -11,11 +11,11 @@ RSpec.describe User, type: :model do
         expect(@item).to be_valid
       end
       it 'costの範囲が、¥300~¥9,999,999の間であることば登録できる' do
-        @item.cost = '9999999'
+        @item.cost = 9999999
         expect(@item).to be_valid
       end
       it 'costが半角数字であれば、登録できる' do
-        @item.cost = '12345'
+        @item.cost = 12345
         expect(@item).to be_valid
       end
     end
@@ -86,6 +86,36 @@ RSpec.describe User, type: :model do
         @item.valid?
         expect(@item.errors.full_messages).to include('Cost is out of setting range')
       end
+
+
+      it 'category_idにid:1が選択されている場合に登録できない' do
+        @item.category_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Category Slect')
+      end
+
+      it 'condition_idにid:1が選択されている場合に登録できない' do
+        @item.condition_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include("Condition status Select")
+      end
+
+      it 'shipping_fee_idにid:1が選択されている場合に登録できない' do
+        @item.shipping_fee_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Shipping fee status Select')
+      end
+      it 'shipping_place_idにid:1が選択されている場合に登録できない' do
+        @item.shipping_place_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Shipping place status Select')
+      end
+      it 'shipping_days_idにid:1が選択されている場合に登録できない' do
+        @item.shipping_days_id = 1
+        @item.valid?
+        expect(@item.errors.full_messages).to include('Shipping days Select')
+      end
+
     end
   end
 end

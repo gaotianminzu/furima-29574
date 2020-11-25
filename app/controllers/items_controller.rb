@@ -19,9 +19,6 @@ class ItemsController < ApplicationController
     end
   end
 
-  def show
-    @item = @item.user.items
-  end
 
   def move_to_index
     redirect_to action: :index unless user_signed_in?
