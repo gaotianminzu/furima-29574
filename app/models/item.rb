@@ -1,6 +1,10 @@
 class Item < ApplicationRecord
   extend ActiveHash::Associations::ActiveRecordExtensions
-  belongs_to :category, :condition, :shippingfee, :shippingplace, :shippingday
+  belongs_to :category
+  belongs_to :condition
+  belongs_to :shipping_place
+  belongs_to :shipping_day
+  belongs_to :shipping_fee
   has_one_attached :image
   belongs_to :user
 
