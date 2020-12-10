@@ -17,9 +17,3 @@ FactoryBot.define do
     association :user
   end
 end
-
-# category_id               { id: 11, name: 'その他'},
-# condition_id              { id: 2, name: '新品、未使用'}
-# shipping_fee_id           { id: 2, name: '着払い(購入者負担)'},
-# shipping_place_id         { id: 2, name: '北海道'},
-# shipping_days_id          { id: 2, name: '1〜２日で発送'},

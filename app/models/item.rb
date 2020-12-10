@@ -7,12 +7,13 @@ class Item < ApplicationRecord
   belongs_to :shipping_fee
   has_one_attached :image
   belongs_to :user
+  has_one :purchase_record
 
   with_options presence: true do
     validates :image
     validates :name
     validates :detail
-    validates :category_id, numericality: { other_than: 1, message: 'Slect' }
+    validates :category_id, numericality: { other_than: 1, message: 'Select' }
     validates :condition_id, numericality: { other_than: 1, message: 'status Select' }
     validates :shipping_fee_id, numericality: { other_than: 1, message: 'status Select' }
     validates :shipping_place_id, numericality: { other_than: 1, message: 'status Select' }
