@@ -9,7 +9,8 @@ class Transaction
     validates :house_num
     validates :phone_number, format: { with: /\A\d{1,11}\z/, message: 'is invalid. Phone number Input only number' }
     validates :token
-    validates :cost
+    validates :user_id
+    validates :item_id
   end
   def save
     purchase_record = PurchaseRecord.create(item_id: item_id, user_id: user_id)

@@ -55,11 +55,6 @@ RSpec.describe Transaction, type: :model do
           @transaction.valid?
           expect(@transaction.errors.full_messages).to include("Phone number can't be blank", 'Phone number is invalid. Phone number Input only number')
         end
-        it '価格が空だと登録できない' do
-          @transaction.cost = ''
-          @transaction.valid?
-          expect(@transaction.errors.full_messages).to include("Cost can't be blank")
-        end
         it '電話番号が１２桁以上だと登録できない' do
           @transaction.phone_number = '000000000000'
           @transaction.valid?
@@ -69,6 +64,16 @@ RSpec.describe Transaction, type: :model do
           @transaction.postal_code = '1111111'
           @transaction.valid?
           expect(@transaction.errors.full_messages).to include('Postal code is invalid. Include hyphen(-)')
+        end
+        it 'user_idが空だと、登録できない' do
+          @transaction.user_id = ''
+          @transaction.valid?
+          expect(@transaction.errors.full_messages).to include("User can't be blank")
+        end
+        it 'item_idが空だと、登録できない' do
+          @transaction.item_id = ''
+          @transaction.valid?
+          expect(@transaction.errors.full_messages).to include("Item can't be blank")
         end
       end
     end
