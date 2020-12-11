@@ -79,14 +79,13 @@ RSpec.describe Transaction, type: :model do
         it 'prectureが１以外でないと、登録できない' do
           @transaction.prefecture = 1
           @transaction.valid?
-          expect(@transaction.errors.full_messages).to include("Prefecture Select")
+          expect(@transaction.errors.full_messages).to include('Prefecture Select')
         end
         it '電話番号は数字のみでないと登録できない' do
           @transaction.phone_number = 'ああああああああ'
           @transaction.valid?
-          expect(@transaction.errors.full_messages).to include("Phone number is invalid. Phone number Input only number")
+          expect(@transaction.errors.full_messages).to include('Phone number is invalid. Phone number Input only number')
         end
-
       end
     end
   end
