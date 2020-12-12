@@ -13,4 +13,4 @@ function itemPrice(){
 
 }
 
-window.addEventListener("load", itemPrice )
+window.addEventListener("load", itemPrice );

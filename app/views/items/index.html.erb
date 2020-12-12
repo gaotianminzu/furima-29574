@@ -132,11 +132,14 @@
           <%= link_to item_path(item.id), class: 'link' do %> 
             <div class='item-img-content'>
               <%= image_tag item.image.variant(resize: '180x180'), class: "item-img" %>
-
               <%# 商品が売れていればsold outを表示しましょう %>
-              <%# <div class='sold-out'>
+           <%# if PurchaseRecord.where(item_id: item.id).exists?%>
+             <% if item.purchase_record.present? %>
+              <div class='sold-out'>
                 <span>Sold Out!!</span>
-              </div> %>
+              </div>
+              <% end %>            
+            <%# end %>
               <%# //商品が売れていればsold outを表示しましょう %>
             </div>
             <div class='item-info'>
@@ -147,7 +150,6 @@
                 <span><%= item.cost %>円<br>
                 <%= item.shipping_fee.name %>
                 </span>
-                
                 <div class='star-btn'>
                   <%= image_tag "star.png", class:"star-icon" %>
                   <span class='star-count'>0</span>
@@ -187,7 +189,7 @@
 
   <%# /商品一覧 %>
 </div>
-<%= link_to('#', class: 'purchase-btn') do %>
+<%= link_to new_item_path , class: 'purchase-btn' do %>
   <span class='purchase-btn-text'>出品する</span>
   <%= image_tag 'icon_camera.png' , size: '185x50' ,class: "purchase-btn-icon" %>
 <% end %>
