@@ -4,7 +4,7 @@ class TransactionsController < ApplicationController
 
   def index
     @transaction = Transaction.new
-    if PurchaseRecord.where(item_id: @item.id).exists?
+    if @item.purchase_record.present?
       redirect_to root_path
     elsif current_user.id == @item.user_id
       redirect_to root_path
