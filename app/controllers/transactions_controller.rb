@@ -8,8 +8,6 @@ class TransactionsController < ApplicationController
       redirect_to root_path
     elsif current_user.id == @item.user_id
       redirect_to root_path
-    else
-      render action: :index
     end
   end
 

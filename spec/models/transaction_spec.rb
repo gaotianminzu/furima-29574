@@ -3,15 +3,17 @@ require 'rails_helper'
 RSpec.describe Transaction, type: :model do
 
     before do
-      @user = FactoryBot.build(:user)
-      @item = FactoryBot.build(:item)
-      @transaction = FactoryBot.build(:transaction,user_id: @user.id , item_id: @item.id)
+      @user = FactoryBot.create(:user)
+      @item = FactoryBot.create(:item)
+      @transaction = FactoryBot.build(:transaction, user_id: @user.id , item_id: @item.id)
+      sleep(1)
     end
 
     describe '購入手続き' do
       context '購入がうまくいくとき' do
         it 'すべての項目が存在すれば登録できる' do
           expect(@transaction).to be_valid
+        
         end
         it '郵便番号は、ハイフンがあれば登録できる' do
           @transaction.postal_code = '111-1111'
@@ -49,6 +51,7 @@ RSpec.describe Transaction, type: :model do
         end
         it '番地が空だと登録できない' do
           @transaction.house_num = ''
+          binding.pry
           @transaction.valid?
           expect(@transaction.errors.full_messages).to include("House num can't be blank")
         end

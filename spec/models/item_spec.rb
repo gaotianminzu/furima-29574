@@ -2,8 +2,10 @@ require 'rails_helper'
 
 RSpec.describe Item, type: :model do
   before do
-    @item = FactoryBot.build(:item)
+    @item = FactoryBot.create(:item)
+    sleep(1)
   end
+
 
   describe '商品出品' do
     context '商品登録がうまくいくとき' do
@@ -48,23 +50,23 @@ RSpec.describe Item, type: :model do
       it 'condition_idが空だと登録できない' do
         @item.condition_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Condition can't be blank")
+        expect(@item.errors.full_messages).to include("Condition can't be blank", "Condition Select")
       end
 
       it 'shipping_fee_idが空だと登録できない' do
         @item.shipping_fee_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping fee can't be blank", 'Shipping fee status Select')
+        expect(@item.errors.full_messages).to include("Shipping fee can't be blank", "Shipping fee Select")
       end
       it 'shipping_place_idが空だと登録できない' do
         @item.shipping_place_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping place can't be blank", 'Shipping place status Select')
+        expect(@item.errors.full_messages).to include("Shipping place can't be blank", "Shipping place Select")
       end
       it 'shipping_days_idが空だと登録できない' do
         @item.shipping_days_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping days can't be blank", 'Shipping days Select')
+        expect(@item.errors.full_messages).to include( "Shipping days can't be blank", "Shipping days Select")
       end
       it 'costが空だと登録できない' do
         @item.cost = ''
@@ -97,18 +99,18 @@ RSpec.describe Item, type: :model do
       it 'condition_idにid:1が選択されている場合に登録できない' do
         @item.condition_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include('Condition status Select')
+        expect(@item.errors.full_messages).to include('Condition Select')
       end
 
       it 'shipping_fee_idにid:1が選択されている場合に登録できない' do
         @item.shipping_fee_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include('Shipping fee status Select')
+        expect(@item.errors.full_messages).to include("Shipping fee Select")
       end
       it 'shipping_place_idにid:1が選択されている場合に登録できない' do
         @item.shipping_place_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include('Shipping place status Select')
+        expect(@item.errors.full_messages).to include('Shipping place Select')
       end
       it 'shipping_days_idにid:1が選択されている場合に登録できない' do
         @item.shipping_days_id = 1
