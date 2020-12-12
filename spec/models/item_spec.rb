@@ -6,11 +6,9 @@ RSpec.describe Item, type: :model do
     sleep(1)
   end
 
-
   describe '商品出品' do
     context '商品登録がうまくいくとき' do
       it 'すべての項目が存在すれば登録できる' do
-        binding.pry
         expect(@item).to be_valid
       end
       it 'costの範囲が、¥300~¥9,999,999の間であることば登録できる' do
@@ -44,29 +42,29 @@ RSpec.describe Item, type: :model do
       it 'category_idが空だと登録できない' do
         @item.category_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category can't be blank", "Category Select")
+        expect(@item.errors.full_messages).to include("Category can't be blank", 'Category Select')
       end
 
       it 'condition_idが空だと登録できない' do
         @item.condition_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Condition can't be blank", "Condition Select")
+        expect(@item.errors.full_messages).to include("Condition can't be blank", 'Condition Select')
       end
 
       it 'shipping_fee_idが空だと登録できない' do
         @item.shipping_fee_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping fee can't be blank", "Shipping fee Select")
+        expect(@item.errors.full_messages).to include("Shipping fee can't be blank", 'Shipping fee Select')
       end
       it 'shipping_place_idが空だと登録できない' do
         @item.shipping_place_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping place can't be blank", "Shipping place Select")
+        expect(@item.errors.full_messages).to include("Shipping place can't be blank", 'Shipping place Select')
       end
       it 'shipping_days_idが空だと登録できない' do
         @item.shipping_days_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include( "Shipping days can't be blank", "Shipping days Select")
+        expect(@item.errors.full_messages).to include("Shipping days can't be blank", 'Shipping days Select')
       end
       it 'costが空だと登録できない' do
         @item.cost = ''
@@ -105,7 +103,7 @@ RSpec.describe Item, type: :model do
       it 'shipping_fee_idにid:1が選択されている場合に登録できない' do
         @item.shipping_fee_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include("Shipping fee Select")
+        expect(@item.errors.full_messages).to include('Shipping fee Select')
       end
       it 'shipping_place_idにid:1が選択されている場合に登録できない' do
         @item.shipping_place_id = 1

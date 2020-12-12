@@ -25,7 +25,7 @@ class TransactionsController < ApplicationController
   private
 
   def order_params
-    params.require(:transaction).permit(:postal_code, :prefecture, :city_town_villages, :house_num, :building_name, :phone_number, :cost).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
+    params.require(:transaction).permit(:postal_code, :shipping_place, :city_town_villages, :house_num, :building_name, :phone_number, :cost).merge(user_id: current_user.id, item_id: params[:item_id], token: params[:token])
   end
 
   def pay_item
