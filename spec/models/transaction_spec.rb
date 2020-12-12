@@ -38,7 +38,7 @@ RSpec.describe Transaction, type: :model do
         expect(@transaction.errors.full_messages).to include("Postal code can't be blank", 'Postal code is invalid. Include hyphen(-)')
       end
       it '都道府県が空だと登録できない' do
-        @transaction.shipping_place = ''
+        @transaction.shipping_place_id = ''
         @transaction.valid?
         expect(@transaction.errors.full_messages).to include("Shipping place can't be blank", 'Shipping place Select')
       end
@@ -84,7 +84,7 @@ RSpec.describe Transaction, type: :model do
       end
 
       it '都道府県が１以外でないと、登録できない' do
-        @transaction.shipping_place = 1
+        @transaction.shipping_place_id = 1
         @transaction.valid?
         expect(@transaction.errors.full_messages).to include('Shipping place Select')
       end
