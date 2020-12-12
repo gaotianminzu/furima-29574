@@ -1,9 +1,11 @@
 require 'rails_helper'
 
 RSpec.describe Transaction, type: :model do
-  describe '寄付情報の保存' do
+
     before do
-      @transaction = FactoryBot.build(:transaction)
+      @user = FactoryBot.build(:user)
+      @item = FactoryBot.build(:item)
+      @transaction = FactoryBot.build(:transaction,user_id: @user.id , item_id: @item.id)
     end
 
     describe '購入手続き' do
@@ -87,6 +89,6 @@ RSpec.describe Transaction, type: :model do
           expect(@transaction.errors.full_messages).to include('Phone number is invalid. Phone number Input only number')
         end
       end
+
     end
-  end
 end

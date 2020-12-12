@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-RSpec.describe User, type: :model do
+RSpec.describe Item, type: :model do
   before do
     @item = FactoryBot.build(:item)
   end
@@ -8,6 +8,7 @@ RSpec.describe User, type: :model do
   describe '商品出品' do
     context '商品登録がうまくいくとき' do
       it 'すべての項目が存在すれば登録できる' do
+        binding.pry
         expect(@item).to be_valid
       end
       it 'costの範囲が、¥300~¥9,999,999の間であることば登録できる' do
@@ -41,7 +42,7 @@ RSpec.describe User, type: :model do
       it 'category_idが空だと登録できない' do
         @item.category_id = ''
         @item.valid?
-        expect(@item.errors.full_messages).to include("Category can't be blank", 'Category Slect')
+        expect(@item.errors.full_messages).to include("Category can't be blank", "Category Select")
       end
 
       it 'condition_idが空だと登録できない' do
@@ -90,7 +91,7 @@ RSpec.describe User, type: :model do
       it 'category_idにid:1が選択されている場合に登録できない' do
         @item.category_id = 1
         @item.valid?
-        expect(@item.errors.full_messages).to include('Category Slect')
+        expect(@item.errors.full_messages).to include('Category Select')
       end
 
       it 'condition_idにid:1が選択されている場合に登録できない' do
