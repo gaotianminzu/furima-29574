@@ -277,6 +277,7 @@ a {
 
 
 .item-info {
+  width:270px;
   background-color: #FFF;
   color: black;
   padding: 1vw;
@@ -304,8 +305,9 @@ a {
   margin-right: 0.5vw;
 }
 
-.star-count {
-  font-size: 2vh;
+.list {
+  list-style-type: none;
+
 }
 
 /* //商品一覧 */
